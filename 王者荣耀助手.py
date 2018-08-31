@@ -13,7 +13,7 @@ heros.sort()
 
 all_heroes = [heros,tanke,zhanshi,cike,fashi,sheshou,fuzhu]
 
-WHITE = (255,255,255,150)  # R G B
+WHITE = (255,255,255)  # R G B
 QWHITE = (200,200,200)
 RED = (255,0,0)
 GREEN = (0,255,0)
@@ -40,8 +40,13 @@ weizhi = -1
 img = pygame.image.load("image/不知火舞bk.jpg")
 renfeng = pygame.image.load("image/不知火舞_忍蜂.png")
 renfeng_text = pygame.image.load("image/不知火舞_忍蜂text.png")
+bsrenfeng = pygame.image.load("image/不知火舞_必杀忍蜂.png")
+bsrenfeng_text = pygame.image.load("image/不知火舞_必杀忍蜂text.png")
+huadieshan = pygame.image.load("image/不知火舞_花蝶扇.png")
+huadieshan_text = pygame.image.load("image/不知火舞_花蝶扇text.png")
+feixianglongyanzhen = pygame.image.load("image/不知火舞_飞翔龙炎阵.png")
+feixianglongyanzhen_text = pygame.image.load("image/不知火舞_飞翔龙炎阵text.png")
 
-# move_img = pygame.image.load("image/")
 
 # 获得所有英雄的图片
 # allhero_images = []
@@ -340,9 +345,22 @@ while True:
         if mby == 0:
             screen.blit(back_text, (0, 0))
             screen.blit(renfeng, (1080, 70))   #  1080, +93 ，70 ，+93
+            screen.blit(feixianglongyanzhen, (1080, 200))   #  1080, +93, 233,+93
+            screen.blit(huadieshan, (1080, 330))    #  163
+            screen.blit(bsrenfeng, (1080, 460))
         if m1 and 1080 < mx < 1080+93 and \
                 70 < my < 70+93:
             screen.blit(renfeng_text, (1080-780, 70))
+        if m1 and 1080 < mx < 1080+93 and \
+                200 < my < 200+93:
+            screen.blit(renfeng_text, (1080-780, 200))
+        if m1 and 1080 < mx < 1080+93 and \
+                330 < my < 330+93:
+            screen.blit(renfeng_text, (1080-780, 330))
+        if m1 and 1080 < mx < 1080+93 and \
+                460 < my < 460+93:
+            screen.blit(renfeng_text, (1080-780, 460))
+
         if m1 and 0 < mx < 0 + 26*5 and \
                 0 < my < 30:
             back_text = font.render("<-返回首页", True, RED)
