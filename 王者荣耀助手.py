@@ -46,8 +46,12 @@ huadieshan = pygame.image.load("image/不知火舞_花蝶扇.png")
 huadieshan_text = pygame.image.load("image/不知火舞_花蝶扇text.png")
 feixianglongyanzhen = pygame.image.load("image/不知火舞_飞翔龙炎阵.png")
 feixianglongyanzhen_text = pygame.image.load("image/不知火舞_飞翔龙炎阵text.png")
+bzhw_mw = pygame.image.load("image/不知火舞_铭文搭配建议.png")
+mengyan = pygame.image.load("image/梦魇.png")
+lianmin = pygame.image.load("image/怜悯.png")
+lunhui  = pygame.image.load("image/轮回.png")
 
-
+mwjy = font.render("铭文建议",True,QWHITE)
 # 获得所有英雄的图片
 # allhero_images = []
 # for i in range(len(all_heroes)):
@@ -321,7 +325,7 @@ while True:
             text = font16.render(fuzhu[i], True, GREEN)
             screen.blit(text, (x1, y1))
     for i in range(len(heros)):
-        if m1 == 1 and move==0 and mx > hero_x[i] and mx < hero_x[i] + 100 and \
+        if m1 == 1 and move==0 and position!=-1 and mx > hero_x[i] and mx < hero_x[i] + 100 and \
                 my > hero_y[i] and my < hero_y[i] + 100:
             move = 1
             back_flag = 1
@@ -333,6 +337,10 @@ while True:
             fashi_flag = 0
             sheshou_flag = 0
             fuzhu_flag = 0
+            if i > len(all_heroes[position]):
+                move = 0
+                back_flag = 0
+                weizhi  = 0
 
     if move and back_flag:
         # 获取到当前页面英雄组
@@ -348,6 +356,8 @@ while True:
             screen.blit(feixianglongyanzhen, (1080, 200))   #  1080, +93, 233,+93
             screen.blit(huadieshan, (1080, 330))    #  163
             screen.blit(bsrenfeng, (1080, 460))
+            screen.blit(mwjy,(0, 360))
+            # screen.blit(bzhw_mw, (0, 360))
         if m1 and 1080 < mx < 1080+93 and \
                 70 < my < 70+93:
             screen.blit(renfeng_text, (1080-780, 70))
@@ -360,6 +370,14 @@ while True:
         if m1 and 1080 < mx < 1080+93 and \
                 460 < my < 460+93:
             screen.blit(renfeng_text, (1080-780, 460))
+        if 0 < mx < 36*4 and \
+            360 < my < 360+36:
+
+            # screen.blit(bzhw_mw, (0, 360))
+            # 放铭文图片与文字
+            screen.blit(mengyan, (30, 420))
+            screen.blit(lianmin, (100, 420))
+            screen.blit(lunhui, (170, 420))
 
         if m1 and 0 < mx < 0 + 26*5 and \
                 0 < my < 30:
@@ -368,7 +386,6 @@ while True:
         else:
             back_text = font.render("<-返回首页", True, QWHITE)
     if move == 0:
-
         screen.blit(img, (mbx, mby))
         mby += 20
         if mby > 720:
